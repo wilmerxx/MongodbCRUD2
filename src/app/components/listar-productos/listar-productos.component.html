@@ -1,0 +1,44 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <div class="card">
+        <div class="card-body text-center">
+          <span class="titulo">LISTAR REGISTRO DE ADOPCIÓN DE ANIMALES</span>
+            <button class="btn btn-success float-end" routerLink = "/crear-producto">Nuevo</button> <!--Ruta realtiva con el /-->
+            <table *ngIf ="listProductos.length > 0" class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Cliente</th>
+                  <th scope="col">Animal</th>
+                  <th scope="col">Raza</th>
+                  <th scope="col">Sexo</th>
+                  <th scope="col">Nacimiento</th>
+                  <th scope="col">Dirección</th>
+                  <th scope="col">Télefono</th>
+                  <th scope="col">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor = "let producto of listProductos">
+                  <td>{{ producto.cliente}}</td>
+                  <td>{{ producto.animal}}</td>
+                  <td>{{ producto.raza}}</td>
+                  <td>{{ producto.sexo}}</td>
+                  <td>{{ producto.nacimiento}}</td>
+                  <td>{{ producto.direccion}}</td>
+                  <td>{{ producto.telefono}}</td>
+                  <td>
+                   <div class="action">
+                    <i [routerLink] ="['/editar-producto', producto._id]" class="fas fa-edit text-primary"></i>
+                    <i (click)= "eliminarProducto(producto._id)" class="fas fa-trash-alt text-danger"></i>
+                   </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <h5 style="text-align: start; margin-top: 10px;" *ngIf = "listProductos.length == 0">No hay registro de adopción para mostrar</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
